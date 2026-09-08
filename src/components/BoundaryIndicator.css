@@ -1,0 +1,63 @@
+.boundaryIndicator {
+  position: absolute;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  z-index: 45;
+  pointer-events: none;
+  transition: opacity 160ms linear;
+}
+
+.boundaryIndicator--bottom {
+  bottom: 34px;
+  transform: translateX(-50%);
+}
+
+.boundaryIndicator--top {
+  top: 34px;
+  transform: translateX(-50%);
+}
+
+.boundaryIndicator__svg {
+  width: 44px;
+  height: 44px;
+  transform: rotate(-90deg);
+}
+
+.boundaryIndicator--top .boundaryIndicator__svg {
+  transform: rotate(90deg) scaleX(-1);
+}
+
+.boundaryIndicator__track {
+  fill: none;
+  stroke: var(--rule-faint);
+  stroke-width: 1.5;
+}
+
+.boundaryIndicator__arc {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  stroke-linecap: butt;
+}
+
+.boundaryIndicator__chevron {
+  position: absolute;
+  top: 12px;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.boundaryIndicator--top .boundaryIndicator__chevron {
+  top: auto;
+}
+
+.boundaryIndicator__label {
+  margin-top: 26px;
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  color: var(--text-tertiary);
+}

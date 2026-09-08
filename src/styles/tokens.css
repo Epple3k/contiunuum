@@ -1,0 +1,32 @@
+:root {
+  color-scheme: light;
+
+  /* Essentially three values. The restraint is the identity. */
+  --paper: #f5f4ef;
+  --white: #ffffff;
+  --ink: #111111;
+  --ink-muted: #77736c;
+
+  /* Semantic aliases so the rest of the codebase reads by intent, not hex. */
+  --bg: var(--paper);
+  --surface: var(--white);
+  --rule: var(--ink);
+  --rule-faint: rgba(17, 17, 17, 0.16);
+
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink);
+  --text-tertiary: var(--ink-muted);
+
+  /* Type: a high-contrast display serif for content, mono for the machine. */
+  --font-display: "Bodoni Moda", "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Motion: mechanical rather than liquid — snapping, ticking, hard stops,
+     a brief overshoot on arrival rather than a soft ease. */
+  --ease-mech: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-scene: 480ms;
+  --dur-panel: 200ms;
+
+  --edge-pad: clamp(24px, 4vw, 56px);
+}

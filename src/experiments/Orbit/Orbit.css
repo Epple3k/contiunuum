@@ -1,0 +1,205 @@
+.orbit {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.orbit__stage {
+  position: absolute;
+  inset: 0;
+  z-index: 1; /* pins this whole subtree below .orbitDetail regardless of any child's own z-index */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit__arc {
+  --focus: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(920px, 92vw);
+  height: min(920px, 92vw);
+  transform: translate(-50%, -46%);
+  border-radius: 50%;
+  border: 1px solid var(--rule-faint);
+  pointer-events: none;
+}
+
+.orbit__ring {
+  position: relative;
+  width: 1px;
+  height: 1px;
+}
+
+.orbit__node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 96px;
+  height: 96px;
+  margin: -48px 0 0 -48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  will-change: transform, opacity, filter;
+}
+
+.orbit__nodeGlyph {
+  width: 32px;
+  height: 32px;
+  color: var(--ink);
+}
+
+.orbit__node.is-locked::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  opacity: 0;
+  animation: orbitLock 520ms var(--ease-mech);
+  pointer-events: none;
+}
+
+@keyframes orbitLock {
+  0% {
+    inset: -1px;
+    opacity: 0.9;
+  }
+  100% {
+    inset: -9px;
+    opacity: 0;
+  }
+}
+
+.orbit__dwellRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140px;
+  height: 140px;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  z-index: 250; /* always above every orbit node, however its own z-index is set */
+  overflow: visible;
+  pointer-events: none;
+}
+
+.orbit__dwellTrack {
+  fill: none;
+  stroke: var(--rule-faint);
+  stroke-width: 1.5;
+}
+
+.orbit__dwellFillGroup {
+  opacity: 0; /* driven every frame from JS — no CSS transition, so it never lags behind the scroll */
+}
+
+.orbit__dwellFill {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linecap: butt;
+}
+
+.orbit__focusLabel {
+  position: absolute;
+  left: 50%;
+  bottom: 15%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.orbit__focusName {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.8vw, 34px);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+  transition: opacity 120ms linear;
+}
+
+.orbit__focusDesc {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  transition: opacity 120ms linear;
+}
+
+.orbit__hint {
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-tertiary);
+  opacity: 0.8;
+  transition: opacity 300ms linear;
+  animation: hintPulse 2.4s steps(2) infinite;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* ---- opened app detail ---- */
+
+.orbitDetail {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6vh 6vw 8vh;
+  background: var(--paper);
+  border-left: 1px solid var(--rule-faint);
+  /* opacity/transform/pointer-events are driven every frame from JS,
+     proportional to how far the centered item has opened — this is the resting
+     (fully closed) state shown before the physics loop's first tick. */
+  opacity: 0;
+  transform: scale(0.94);
+  pointer-events: none;
+}
+
+.orbitDetail__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: none;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+  width: min(920px, 88vw);
+}
+
+.orbitDetail__glyph {
+  width: 26px;
+  height: 26px;
+  color: var(--ink);
+}
+
+.orbitDetail__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.orbitDetail__stage {
+  position: relative;
+  flex: 1;
+  width: min(920px, 88vw);
+  margin-top: 4vh;
+}

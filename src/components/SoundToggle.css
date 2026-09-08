@@ -1,0 +1,24 @@
+.soundToggle {
+  position: absolute;
+  top: var(--edge-pad);
+  right: var(--edge-pad);
+  z-index: 60;
+  padding: 6px 10px;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition: background 100ms linear, color 100ms linear;
+}
+
+.soundToggle:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.soundToggle:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}

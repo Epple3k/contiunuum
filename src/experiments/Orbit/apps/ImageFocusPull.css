@@ -1,0 +1,54 @@
+.imageFocusPull {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid var(--rule-faint);
+}
+
+.imageFocusPull__plane {
+  position: absolute;
+  inset: 0;
+  will-change: filter, opacity, transform;
+}
+
+.imageFocusPull__shape {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--ink);
+}
+
+.imageFocusPull__shape--outline {
+  background: transparent;
+  border: 1.5px solid var(--ink);
+}
+
+.imageFocusPull__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.imageFocusPull__label {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity 150ms linear;
+}
+
+.imageFocusPull__readout {
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--text-tertiary);
+}

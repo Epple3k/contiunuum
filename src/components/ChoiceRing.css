@@ -1,0 +1,24 @@
+.choiceRing {
+  width: 36px;
+  height: 36px;
+  overflow: visible;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.choiceRing__track {
+  fill: none;
+  stroke: var(--rule-faint);
+  stroke-width: 1.6;
+}
+
+.choiceRing__fillGroup {
+  opacity: 0; /* driven every frame from JS */
+}
+
+.choiceRing__fill {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  stroke-linecap: butt;
+}

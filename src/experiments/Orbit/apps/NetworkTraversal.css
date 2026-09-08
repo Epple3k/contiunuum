@@ -1,0 +1,54 @@
+.networkTraversal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.networkTraversal__stage {
+  position: relative;
+  width: min(70vh, 70vw);
+  height: min(70vh, 70vw);
+}
+
+.networkTraversal__canvas {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.networkTraversal__ring {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.networkTraversal__contextEdge {
+  stroke: var(--rule-faint);
+  stroke-width: 0.3;
+}
+
+.networkTraversal__pathEdge {
+  stroke: var(--ink);
+  stroke-linecap: butt;
+}
+
+.networkTraversal__node {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 0.5;
+}
+
+.networkTraversal__cursor {
+  fill: var(--ink);
+}
+
+.networkTraversal__readout {
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--text-tertiary);
+}

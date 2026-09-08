@@ -1,0 +1,20 @@
+.cornerLabels {
+  position: absolute;
+  top: var(--edge-pad);
+  left: var(--edge-pad);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 40;
+}
+
+.cornerLabels__line {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+.cornerLabels__line:first-child {
+  color: var(--text-secondary);
+}

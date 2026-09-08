@@ -1,0 +1,109 @@
+.rewind {
+  --t: 0;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transition: filter 300ms linear;
+  filter: contrast(calc(1 - var(--t) * 0.18)) brightness(calc(1 - var(--t) * 0.08));
+}
+
+.rewind__canvasWrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rewind__canvas {
+  width: min(74vh, 74vw);
+  height: min(74vh, 74vw);
+  overflow: visible;
+}
+
+.rewind__readout {
+  position: absolute;
+  left: 50%;
+  bottom: 19%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.rewind__rev {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--ink);
+}
+
+.rewind__caption {
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+.rewind__time {
+  position: absolute;
+  top: calc(var(--edge-pad) + 34px);
+  right: var(--edge-pad);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  z-index: 40;
+}
+
+.rewind__timeline {
+  position: absolute;
+  left: 50%;
+  bottom: 9%;
+  transform: translateX(-50%);
+  width: min(560px, 60vw);
+  height: 30px;
+  opacity: 0;
+  transition: opacity 160ms linear;
+}
+
+.rewind__rail {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--rule);
+}
+
+.rewind__ticks {
+  position: absolute;
+  inset: 0;
+}
+
+.rewind__tick {
+  position: absolute;
+  top: 50%;
+  width: 1px;
+  height: 6px;
+  background: var(--ink);
+  opacity: 0.35;
+  transform: translate(-50%, -50%);
+}
+
+.rewind__marker {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid var(--paper);
+  transform: translate(-50%, -50%);
+  transition: none;
+}
+
+@media (max-width: 900px) {
+  .rewind__timeline {
+    width: 80vw;
+  }
+}
